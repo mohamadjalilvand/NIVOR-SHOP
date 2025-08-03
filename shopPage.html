@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروشگاه - NIVOR</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Vazirmatn) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Custom Styles: Luxury Structure with Fantasy Colors */
+        :root {
+            --color-text: #4A4A4A;
+            --color-gold: #D6B26E;
+            --pearly-white: #FDFBF9;
+            --pastel-pink: #F8D3E0;
+            --light-sky-blue: #CDEBF9;
+            --light-purple: #D5C5F4;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--pearly-white);
+            color: var(--color-text);
+            overflow-x: hidden;
+        }
+
+        /* Dynamic Button Style */
+        .btn {
+            padding: 0.8rem 2.5rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: inline-block;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+        .btn-primary {
+            background-color: var(--color-gold);
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: var(--pastel-pink);
+            color: var(--color-text);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(248, 211, 224, 0.4);
+        }
+        
+        /* Category Filter Button Style */
+        .category-btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background-color: #fff;
+            color: var(--color-text);
+            border: 1px solid #eee;
+        }
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--pastel-pink);
+            color: var(--color-text);
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(248, 211, 224, 0.5);
+        }
+
+
+        /* Scroll Animation Setup */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+        .scroll-animate.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Product Card: Luxury style with fantasy color accents */
+        .product-card {
+            background-color: white;
+            border-radius: 1rem;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-12px);
+        }
+        /* Dynamic shadow color on hover */
+        .product-card.pink-shadow:hover { box-shadow: 0 25px 50px -12px rgba(248, 211, 224, 0.35); }
+        .product-card.blue-shadow:hover { box-shadow: 0 25px 50px -12px rgba(205, 235, 249, 0.45); }
+        .product-card.purple-shadow:hover { box-shadow: 0 25px 50px -12px rgba(213, 197, 244, 0.4); }
+        
+        .product-card .image-wrapper {
+            overflow: hidden;
+            border-radius: 1rem 1rem 0 0;
+        }
+        .product-card img {
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover img {
+            transform: scale(1.08);
+        }
+        .product-card .add-to-cart-btn {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+        .product-card:hover .add-to-cart-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="sticky top-0 bg-white/80 backdrop-blur-lg z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center space-x-6 space-x-reverse">
+                <a href="#" class="text-gray-600 hover:text-black transition-colors"><i class="fas fa-search"></i></a>
+                <a href="#" class="text-gray-600 hover:text-black transition-colors"><i class="fas fa-user"></i></a>
+                <a href="#" class="text-gray-600 hover:text-black transition-colors"><i class="fas fa-shopping-bag"></i></a>
+            </div>
+            <div class="text-4xl font-bold tracking-widest text-black">NIVOR</div>
+            <nav class="hidden md:block">
+                <ul class="flex items-center space-x-10 space-x-reverse">
+                    <li><a href="index.html" class="text-gray-600 hover:text-black transition-colors font-medium">خانه</a></li>
+                    <li><a href="shopPage.html" class="text-var(--color-gold) font-bold transition-colors font-medium">فروشگاه</a></li>
+                    <li><a href="aboutUS.html" class="text-gray-600 hover:text-black transition-colors font-medium">درباره ما</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Shop Page Header -->
+        <section class="py-20 text-center relative bg-white">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-var(--pastel-pink) to-var(--light-sky-blue) opacity-10"></div>
+            <div class="container mx-auto px-6 z-10 relative">
+                <h1 class="text-5xl md:text-6xl font-bold mb-2">کلکسیون کامل NIVOR</h1>
+                <p class="text-lg text-gray-500">تمام آنچه برای درخشش نیاز دارید.</p>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="py-24 md:py-28">
+            <div class="container mx-auto px-6">
+                <!-- Category Filters -->
+                <div class="flex justify-center flex-wrap gap-4 mb-16 scroll-animate">
+                    <button class="category-btn active">همه محصولات</button>
+                    <button class="category-btn">مراقبت از پوست</button>
+                    <button class="category-btn">آرایش صورت</button>
+                    <button class="category-btn">آرایش چشم و لب</button>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+                    <!-- Product Card 1 -->
+                    <div class="product-card pink-shadow group scroll-animate" style="transition-delay: 100ms;">
+                        <div class="image-wrapper"><img src="https://placehold.co/600x700/F8D3E0/FFFFFF?text=Serum" alt="سرم صورت" class="w-full h-auto object-cover"></div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold text-black mb-2">سرم آبرسان هیالورونیک</h3>
+                            <p class="text-lg font-medium text-var(--color-gold) mb-6">۸۹۰٬۰۰۰ تومان</p>
+                            <button class="add-to-cart-btn btn btn-primary w-full text-sm">افزودن به سبد</button>
+                        </div>
+                    </div>
+                    <!-- Product Card 2 -->
+                    <div class="product-card blue-shadow group scroll-animate" style="transition-delay: 200ms;">
+                        <div class="image-wrapper"><img src="https://placehold.co/600x700/CDEBF9/FFFFFF?text=Foundation" alt="کرم پودر" class="w-full h-auto object-cover"></div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold text-black mb-2">کرم پودر ساتنی</h3>
+                            <p class="text-lg font-medium text-var(--color-gold) mb-6">۱٬۱۰۰٬۰۰۰ تومان</p>
+                            <button class="add-to-cart-btn btn btn-primary w-full text-sm">افزودن به سبد</button>
+                        </div>
+                    </div>
+                    <!-- Product Card 3 -->
+                    <div class="product-card purple-shadow group scroll-animate" style="transition-delay: 300ms;">
+                        <div class="image-wrapper"><img src="https://placehold.co/600x700/D5C5F4/FFFFFF?text=Palette" alt="پالت سایه" class="w-full h-auto object-cover"></div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold text-black mb-2">پالت سایه چشم رؤیایی</h3>
+                            <p class="text-lg font-medium text-var(--color-gold) mb-6">۱٬۴۵۰٬۰۰۰ تومان</p>
+                            <button class="add-to-cart-btn btn btn-primary w-full text-sm">افزودن به سبد</button>
+                        </div>
+                    </div>
+                     <!-- Product Card 4 -->
+                    <div class="product-card pink-shadow group scroll-animate" style="transition-delay: 400ms;">
+                        <div class="image-wrapper"><img src="https://placehold.co/600x700/F8D3E0/FFFFFF?text=Lipstick" alt="رژ لب" class="w-full h-auto object-cover"></div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold text-black mb-2">رژ لب مایع مات</h3>
+                            <p class="text-lg font-medium text-var(--color-gold) mb-6">۶۵۰٬۰۰۰ تومان</p>
+                            <button class="add-to-cart-btn btn btn-primary w-full text-sm">افزودن به سبد</button>
+                        </div>
+                    </div>
+                    <!-- Product Card 5 -->
+                    <div class="product-card blue-shadow group scroll-animate" style="transition-delay: 100ms;">
+                        <div class="image-wrapper"><img src="https://placehold.co/600x700/CDEBF9/FFFFFF?text=Cleanser" alt="پاک کننده" class="w-full h-auto object-cover"></div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold text-black mb-2">ژل شستشوی ملایم</h3>
+                            <p class="text-lg font-medium text-var(--color-gold) mb-6">۷۲۰٬۰۰۰ تومان</p>
+                            <button class="add-to-cart-btn btn btn-primary w-full text-sm">افزودن به سبد</button>
+                        </div>
+                    </div>
+                    <!-- Product Card 6 -->
+                    <div class="product-card purple-shadow group scroll-animate" style="transition-delay: 200ms;">
+                        <div class="image-wrapper"><img src="https://placehold.co/600x700/D5C5F4/FFFFFF?text=Mascara" alt="ریمل" class="w-full h-auto object-cover"></div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold text-black mb-2">ریمل حجم دهنده</h3>
+                            <p class="text-lg font-medium text-var(--color-gold) mb-6">۵۸۰٬۰۰۰ تومان</p>
+                            <button class="add-to-cart-btn btn btn-primary w-full text-sm">افزودن به سبد</button>
+                        </div>
+                    </div>
+                     <!-- Product Card 7 -->
+                    <div class="product-card pink-shadow group scroll-animate" style="transition-delay: 300ms;">
+                        <div class="image-wrapper"><img src="https://placehold.co/600x700/F8D3E0/FFFFFF?text=Toner" alt="تونر" class="w-full h-auto object-cover"></div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold text-black mb-2">تونر آرامش‌بخش</h3>
+                            <p class="text-lg font-medium text-var(--color-gold) mb-6">۵۱۰٬۰۰۰ تومان</p>
+                            <button class="add-to-cart-btn btn btn-primary w-full text-sm">افزودن به سبد</button>
+                        </div>
+                    </div>
+                     <!-- Product Card 8 -->
+                    <div class="product-card blue-shadow group scroll-animate" style="transition-delay: 400ms;">
+                        <div class="image-wrapper"><img src="https://placehold.co/600x700/CDEBF9/FFFFFF?text=Primer" alt="پرایمر" class="w-full h-auto object-cover"></div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold text-black mb-2">پرایمر مات کننده</h3>
+                            <p class="text-lg font-medium text-var(--color-gold) mb-6">۷۹۰٬۰۰۰ تومان</p>
+                            <button class="add-to-cart-btn btn btn-primary w-full text-sm">افزودن به سبد</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-20 pb-10 border-t border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-10 text-center md:text-right">
+                <div class="md:col-span-2">
+                    <h4 class="font-bold text-lg mb-4">جستجوی محصول</h4>
+                     <form class="flex">
+                        <input type="text" placeholder="نام محصول را وارد کنید..." class="w-full p-3 rounded-r-lg border border-gray-200 focus:ring-2 focus:ring-var(--color-gold) focus:border-var(--color-gold) transition">
+                        <button class="bg-var(--color-gold) text-white px-5 rounded-l-lg hover:bg-var(--pastel-pink) hover:text-black transition"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">دسترسی سریع</h4>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="text-gray-600 hover:text-var(--color-gold)">خانه</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray-600 hover:text-var(--color-gold)">فروشگاه</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray-600 hover:text-var(--color-gold)">رهگیری سفارش</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">پشتیبانی</h4>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="text-gray-600 hover:text-var(--color-gold)">سوالات متداول</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray-600 hover:text-var(--color-gold)">قوانین و مقررات</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray-600 hover:text-var(--color-gold)">تماس با ما</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="font-bold text-lg mb-4">ما را دنبال کنید</h4>
+                    <div class="flex justify-center md:justify-start space-x-5 space-x-reverse">
+                        <a href="#" class="text-gray-600 hover:text-var(--color-gold) text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-var(--color-gold) text-xl"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-var(--color-gold) text-xl"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 mt-8 pt-6 text-center text-gray-400 text-sm">
+                <h3 class="text-2xl font-bold text-black mb-4">NIVOR</h3>
+                <p>&copy; 1403 - تمامی حقوق برای برند NIVOR محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Scroll Animation Logic ---
+        const scrollElements = document.querySelectorAll('.scroll-animate');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        scrollElements.forEach(el => {
+            observer.observe(el);
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درباره ما - NIVOR</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Vazirmatn) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Custom Styles: Luxury Structure with Fantasy Colors */
+        :root {
+            --color-text: #4A4A4A;
+            --color-gold: #D6B26E;
+            --pearly-white: #FDFBF9;
+            --pastel-pink: #F8D3E0;
+            --light-sky-blue: #CDEBF9;
+            --light-purple: #D5C5F4;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--pearly-white);
+            color: var(--color-text);
+            overflow-x: hidden;
+        }
+
+        /* Dynamic Button Style */
+        .btn {
+            padding: 0.8rem 2.5rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: inline-block;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+        .btn-primary {
+            background-color: var(--color-gold);
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: var(--pastel-pink);
+            color: var(--color-text);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(248, 211, 224, 0.4);
+        }
+
+        /* Scroll Animation Setup */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+        .scroll-animate.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="sticky top-0 bg-white/80 backdrop-blur-lg z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center space-x-6 space-x-reverse">
+                <a href="#" class="text-gray-600 hover:text-black transition-colors"><i class="fas fa-search"></i></a>
+                <a href="#" class="text-gray-600 hover:text-black transition-colors"><i class="fas fa-user"></i></a>
+                <a href="#" class="text-gray-600 hover:text-black transition-colors"><i class="fas fa-shopping-bag"></i></a>
+            </div>
+            <div class="text-4xl font-bold tracking-widest text-black">NIVOR</div>
+            <nav class="hidden md:block">
+                <ul class="flex items-center space-x-10 space-x-reverse">
+                    <li><a href="index.html" class="text-gray-600 hover:text-black transition-colors font-medium">خانه</a></li>
+                    <li><a href="shopPage.html" class="text-gray-600 hover:text-black transition-colors font-medium">فروشگاه</a></li>
+                    <li><a href="aboutUS.html" class="text-var(--color-gold) font-bold transition-colors font-medium">درباره ما</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <section class="py-20 text-center relative bg-white">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-var(--pastel-pink) to-var(--light-sky-blue) opacity-10"></div>
+            <div class="container mx-auto px-6 z-10 relative">
+                <h1 class="text-5xl md:text-6xl font-bold mb-2">داستان NIVOR</h1>
+                <p class="text-lg text-gray-500">سفری به قلب زیبایی و کیفیت</p>
+            </div>
+        </section>
+
+        <!-- Brand Story Section (from homepage) -->
+        <section class="py-24 md:py-32 bg-var(--pearly-white)">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+                <div class="scroll-animate">
+                    <img src="https://placehold.co/800x900/F8D3E0/FFFFFF?text=NIVOR" alt="داستان برند NIVOR" class="rounded-xl shadow-lg">
+                </div>
+                <div class="scroll-animate" style="transition-delay: 200ms;">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">داستان ما، زیبایی شما</h2>
+                    <p class="text-lg text-gray-600 leading-loose mb-8">
+                        در NIVOR، ما به دنبال خلق محصولاتی هستیم که نه تنها ظاهر شما را زیباتر می‌کنند، بلکه به روح شما نیز لطافت و شادی می‌بخشند. هر محصول با بالاترین استانداردها و با الهام از قدرت رنگ‌ها و طبیعت ساخته شده است.
+                    </p>
+                     <p class="text-lg text-gray-600 leading-loose">
+                        سفر ما از یک رؤیا آغاز شد: رؤیای ساخت لوازم آرایشی که هم لوکس و باکیفیت باشند و هم سرشار از حس خوب و انرژی مثبت. ما معتقدیم زیبایی نباید به قیمت آسیب به طبیعت یا حیوانات تمام شود و به همین دلیل، تمام محصولات ما بدون تست حیوانی (Cruelty-Free) و با استفاده از بهترین مواد اولیه تولید می‌شوند.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Our Philosophy Section -->
+        <section class="py-24 md:py-32 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-20 scroll-animate">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">فلسفه ما</h2>
+                    <p class="text-lg text-gray-500">سه اصلی که ما به آن پایبندیم.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <!-- Value 1 -->
+                    <div class="scroll-animate" style="transition-delay: 100ms;">
+                        <div class="w-24 h-24 bg-var(--pastel-pink)/30 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-gem text-4xl text-var(--color-gold)"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">کیفیت بی‌نظیر</h3>
+                        <p class="text-gray-600">ما تنها از بهترین و ایمن‌ترین مواد اولیه برای خلق محصولاتی ماندگار و مؤثر استفاده می‌کنیم.</p>
+                    </div>
+                    <!-- Value 2 -->
+                    <div class="scroll-animate" style="transition-delay: 200ms;">
+                        <div class="w-24 h-24 bg-var(--light-sky-blue)/30 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-leaf text-4xl text-var(--color-gold)"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">احترام به طبیعت</h3>
+                        <p class="text-gray-600">تمام محصولات ما بدون تست حیوانی هستند و ما همواره در تلاش برای استفاده از بسته‌بندی‌های پایدار هستیم.</p>
+                    </div>
+                    <!-- Value 3 -->
+                    <div class="scroll-animate" style="transition-delay: 300ms;">
+                        <div class="w-24 h-24 bg-var(--light-purple)/30 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-sparkles text-4xl text-var(--color-gold)"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">قدرت بخشی به شما</h3>
+                        <p class="text-gray-600">هدف ما این است که با محصولاتمان، به شما اعتماد به نفس و شادی هدیه دهیم تا زیبایی منحصربه‌فرد خود را جشن بگیرید.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-20 pb-10 border-t border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-10 text-center md:text-right">
+                <div class="md:col-span-2">
+                    <h4 class="font-bold text-lg mb-4">جستجوی محصول</h4>
+                     <form class="flex">
+                        <input type="text" placeholder="نام محصول را وارد کنید..." class="w-full p-3 rounded-r-lg border border-gray-200 focus:ring-2 focus:ring-var(--color-gold) focus:border-var(--color-gold) transition">
+                        <button class="bg-var(--color-gold) text-white px-5 rounded-l-lg hover:bg-var(--pastel-pink) hover:text-black transition"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">دسترسی سریع</h4>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="text-gray-600 hover:text-var(--color-gold)">خانه</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray-600 hover:text-var(--color-gold)">فروشگاه</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray-600 hover:text-var(--color-gold)">رهگیری سفارش</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">پشتیبانی</h4>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="text-gray-600 hover:text-var(--color-gold)">سوالات متداول</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray-600 hover:text-var(--color-gold)">قوانین و مقررات</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray-600 hover:text-var(--color-gold)">تماس با ما</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="font-bold text-lg mb-4">ما را دنبال کنید</h4>
+                    <div class="flex justify-center md:justify-start space-x-5 space-x-reverse">
+                        <a href="#" class="text-gray-600 hover:text-var(--color-gold) text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-var(--color-gold) text-xl"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-var(--color-gold) text-xl"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 mt-8 pt-6 text-center text-gray-400 text-sm">
+                <h3 class="text-2xl font-bold text-black mb-4">NIVOR</h3>
+                <p>&copy; 1403 - تمامی حقوق برای برند NIVOR محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Scroll Animation Logic ---
+        const scrollElements = document.querySelectorAll('.scroll-animate');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        scrollElements.forEach(el => {
+            observer.observe(el);
+        });
+    });
+    </script>
+</body>
+</html>

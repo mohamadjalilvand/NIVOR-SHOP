@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیریت - NIVOR</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Vazirmatn) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Custom Styles: Optimized with a full pink background */
+        :root {
+            --color-text: #4A4A4A;
+            --color-gold: #de43a5;
+            --pastel-pink: #F8D3E0;
+            --sidebar-bg: #FFFFFF;
+            --sidebar-hover-bg: #fefbff;
+            --page-bg: #FDF2F5; /* UPDATED: Main background is now a soft, consistent pink */
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--page-bg); /* UPDATED background color */
+            color: var(--color-text);
+        }
+
+        /* Sidebar Styles - Refined for better contrast */
+        .sidebar {
+            background: var(--sidebar-bg);
+            border-left: 1px solid #f5f0ea;
+            transition: transform 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(100%); /* Hidden by default on mobile */
+            }
+            .sidebar.active {
+                transform: translateX(0);
+            }
+        }
+
+        /* Sidebar Menu Item Styles - Optimized for new theme */
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 0.9rem 1.25rem;
+            margin: 0.5rem 1rem;
+            border-radius: 0.75rem;
+            color: #5a6169;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .menu-item:hover:not(.active) {
+            background-color: var(--sidebar-hover-bg);
+            color: var(--color-gold);
+            transform: translateX(-3px);
+        }
+        /* UPDATED: Active item is now Gold for better contrast and luxury feel */
+        .menu-item.active {
+            background-color: var(--color-gold); 
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(214, 178, 110, 0.4);
+        }
+        .menu-item.active i {
+            color: white; 
+        }
+        .menu-item i.fa-chevron-down {
+            transition: transform 0.3s;
+        }
+        .menu-item i.rotate-180 {
+            transform: rotate(180deg);
+        }
+        .menu-item i {
+            margin-left: 0.75rem;
+            width: 20px;
+            color: #9ca3af;
+            transition: color 0.3s;
+        }
+        .menu-item:hover i {
+            color: var(--color-gold);
+        }
+
+        /* Dropdown Menu Animation */
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            padding-right: 1.5rem;
+        }
+        .submenu.open {
+            max-height: 500px;
+        }
+        .submenu .menu-item {
+            padding-top: 0.7rem;
+            padding-bottom: 0.7rem;
+            background-color: transparent;
+        }
+        .submenu .menu-item:hover {
+            background-color: var(--sidebar-hover-bg);
+        }
+        
+        /* Main content card styles - Optimized for pink background */
+        .stat-card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px -5px rgba(217, 195, 203, 0.3);
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px -5px rgba(217, 195, 203, 0.4);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="sidebar w-72 bg-var(--sidebar-bg) fixed top-0 right-0 h-full z-40 md:relative md:transform-none">
+            <!-- Logo -->
+            <div class="p-6 text-center border-b border-gray-100">
+                <h1 class="text-3xl font-bold tracking-widest text-black">NIVOR</h1>
+                <p class="text-sm text-gray-400 mt-1">پنل مدیریت</p>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="flex-1 p-4">
+                <ul class="space-y-1">
+                    <li><a href="#" class="menu-item active"><i class="fas fa-tachometer-alt"></i> داشبورد</a></li>
+                    
+                    <!-- Products Dropdown -->
+                    <li>
+                        <a href="#" id="products-toggle" class="menu-item justify-between">
+                            <span><i class="fas fa-box-open"></i> محصولات</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul id="products-submenu" class="submenu mt-1">
+                            <li><a href="#" class="menu-item text-sm"><i class="fas fa-plus-circle"></i> افزودن محصول</a></li>
+                            <li><a href="#" class="menu-item text-sm"><i class="fas fa-list-ul"></i> لیست محصولات</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="#" class="menu-item"><i class="fas fa-users"></i> کاربران</a></li>
+                    <li><a href="#" class="menu-item"><i class="fas fa-comments"></i> نظرات</a></li>
+                    <li><a href="#" class="menu-item"><i class="fas fa-chart-line"></i> گزارشات</a></li>
+                    <li><a href="#" class="menu-item"><i class="fas fa-edit"></i> ویرایش "درباره ما"</a></li>
+                    <li><a href="index.html" class="menu-item"><i class="fas fa-chart-line"></i> بازگشت به صفحه اصلی </a></li>
+                </ul>
+            </nav>
+
+            <!-- Admin Profile / Logout -->
+            <div class="p-4 border-t border-gray-100">
+                <a href="#" class="menu-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    خروج از حساب
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header for Mobile -->
+            <header class="flex justify-between items-center p-4 bg-white shadow-md md:hidden">
+                <div class="text-2xl font-bold">داشبورد</div>
+                <button id="menu-toggle" class="text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </header>
+
+            <!-- Content Area -->
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-var(--page-bg) p-6 md:p-8">
+                <div class="container mx-auto">
+                    <!-- Stats Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <div class="stat-card">
+                            <h3 class="text-gray-500 font-medium">بازدید امروز</h3>
+                            <p class="text-3xl font-bold mt-2">۱,۲۵۴</p>
+                            <p class="text-green-500 text-sm mt-1">+۱۲٪ نسبت به دیروز</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-gray-500 font-medium">بازدید ماهانه</h3>
+                            <p class="text-3xl font-bold mt-2">۳۴,۸۲۰</p>
+                             <p class="text-green-500 text-sm mt-1">+۸٪ نسبت به ماه قبل</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-gray-500 font-medium">فروش امروز</h3>
+                            <p class="text-3xl font-bold mt-2">۱۲,۴۵۰,۰۰۰ <span class="text-sm">تومان</span></p>
+                             <p class="text-red-500 text-sm mt-1">-۵٪ نسبت به دیروز</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-gray-500 font-medium">سفارشات جدید</h3>
+                            <p class="text-3xl font-bold mt-2">۳۴</p>
+                             <p class="text-gray-500 text-sm mt-1">در انتظار بررسی</p>
+                        </div>
+                    </div>
+
+                    <!-- Latest Sales Table -->
+                    <div class="stat-card">
+                        <h3 class="font-bold text-lg mb-4">آخرین فاکتورهای فروش</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-right">
+                                <thead>
+                                    <tr class="border-b border-gray-100">
+                                        <th class="p-4 font-semibold text-gray-500">شماره فاکتور</th>
+                                        <th class="p-4 font-semibold text-gray-500">نام مشتری</th>
+                                        <th class="p-4 font-semibold text-gray-500">تعداد محصول</th>
+                                        <th class="p-4 font-semibold text-gray-500">مبلغ کل</th>
+                                        <th class="p-4 font-semibold text-gray-500">وضعیت</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                        <td class="p-4">#10542</td>
+                                        <td class="p-4">سارا احمدی</td>
+                                        <td class="p-4">۳</td>
+                                        <td class="p-4">۲,۴۵۰,۰۰۰ تومان</td>
+                                        <td class="p-4"><span class="bg-green-200 text-green-800 px-2 py-1 rounded-full text-xs font-medium">پرداخت شده</span></td>
+                                    </tr>
+                                    <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                        <td class="p-4">#10541</td>
+                                        <td class="p-4">مریم رضایی</td>
+                                        <td class="p-4">۱</td>
+                                        <td class="p-4">۸۹۰,۰۰۰ تومان</td>
+                                        <td class="p-4"><span class="bg-green-200 text-green-800 px-2 py-1 rounded-full text-xs font-medium">پرداخت شده</span></td>
+                                    </tr>
+                                    <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                        <td class="p-4">#10540</td>
+                                        <td class="p-4">علی کریمی</td>
+                                        <td class="p-4">۵</td>
+                                        <td class="p-4">۴,۱۲۰,۰۰۰ تومان</td>
+                                        <td class="p-4"><span class="bg-yellow-200 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">در حال پردازش</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="p-4">#10539</td>
+                                        <td class="p-4">زهرا حسینی</td>
+                                        <td class="p-4">۲</td>
+                                        <td class="p-4">۱,۷۰۰,۰۰۰ تومان</td>
+                                        <td class="p-4"><span class="bg-red-200 text-red-800 px-2 py-1 rounded-full text-xs font-medium">لغو شده</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Sidebar Toggle for Mobile ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        // --- Products Dropdown Logic ---
+        const productsToggle = document.getElementById('products-toggle');
+        const productsSubmenu = document.getElementById('products-submenu');
+        const chevronIcon = productsToggle.querySelector('.fa-chevron-down');
+
+        productsToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            productsSubmenu.classList.toggle('open');
+            chevronIcon.classList.toggle('rotate-180');
+        });
+    });
+    </script>
+</body>
+</html>

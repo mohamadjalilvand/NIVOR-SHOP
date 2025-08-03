@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIVOR - تجملِ رؤیایی</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Vazirmatn) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Custom Styles: Luxury Structure with Fantasy Colors */
+        :root {
+            --color-text: #4A4A4A;
+            --color-gold: #D6B26E;
+            --pearly-white: #FDFBF9;
+            --pastel-pink: #F8D3E0;
+            --light-sky-blue: #CDEBF9;
+            --light-purple: #D5C5F4;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--pearly-white);
+            color: var(--color-text);
+            overflow-x: hidden;
+        }
+
+        /* Dynamic Button Style */
+        .btn {
+            padding: 0.8rem 2.5rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: inline-block;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+        .btn-primary {
+            background-color: var(--color-gold);
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: var(--pastel-pink);
+            color: var(--color-text);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(248, 211, 224, 0.4);
+        }
+
+        /* Scroll Animation Setup */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+        .scroll-animate.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Product Card: Luxury style with fantasy color accents */
+        .product-card {
+            background-color: white;
+            border-radius: 1rem;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-12px);
+        }
+        /* Dynamic shadow color on hover */
+        .product-card.pink-shadow:hover { box-shadow: 0 25px 50px -12px rgba(248, 211, 224, 0.35); }
+        .product-card.blue-shadow:hover { box-shadow: 0 25px 50px -12px rgba(205, 235, 249, 0.45); }
+        .product-card.purple-shadow:hover { box-shadow: 0 25px 50px -12px rgba(213, 197, 244, 0.4); }
+        
+        .product-card .image-wrapper {
+            overflow: hidden;
+            border-radius: 1rem 1rem 0 0;
+        }
+        .product-card img {
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover img {
+            transform: scale(1.08);
+        }
+        .product-card .add-to-cart-btn {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+        .product-card:hover .add-to-cart-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Floating Shapes Animation */
+        @keyframes float-subtle {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .floating-element {
+            animation: float-subtle 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="absolute top-0 left-0 right-0 z-50 py-8">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-6 space-x-reverse">
+                <a href="#" class="text-gray-600 hover:text-black transition-colors"><i class="fas fa-search"></i></a>
+                <a href="#" class="text-gray-600 hover:text-black transition-colors"><i class="fas fa-user"></i></a>
+                <a href="#" class="text-gray-600 hover:text-black transition-colors"><i class="fas fa-shopping-bag"></i></a>
+            </div>
+            <div class="text-4xl font-bold tracking-widest text-black">NIVOR</div>
+            <nav class="hidden md:block">
+                <ul class="flex items-center space-x-10 space-x-reverse">
+                    <li><a href="index.html" class="text-gray-600 hover:text-black transition-colors font-medium">خانه</a></li>
+                    <li><a href="shopPage.html" class="text-gray-600 hover:text-black transition-colors font-medium">فروشگاه</a></li>
+                    <li><a href="aboutUS.html" class="text-gray-600 hover:text-black transition-colors font-medium">درباره ما</a></li>
+                    <li><a href="panelAdmin.html" class="text-gray-600 hover:text-black transition-colors font-medium">پنل مدیریت</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center text-center pt-32 pb-16 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-var(--pastel-pink) opacity-20 filter blur-3xl"></div>
+            <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-var(--light-sky-blue) opacity-20 filter blur-3xl"></div>
+            
+            <div class="container mx-auto px-6 z-10">==
+                <div class="scroll-animate">
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-4">
+                        تجملِ محض، رنگِ رویا
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto mb-10">
+                        به دنیای NIVOR خوش آمدید، جایی که کیفیت برتر با لطافت رنگ‌های پاستلی در هم می‌آمیزد.
+                    </p>
+                    <a href="#products" class="btn btn-primary">مشاهده کلکسیون</a>
+                </div>
+                <div class="relative mt-16 scroll-animate" style="transition-delay: 200ms;">
+                    <img src="https://placehold.co/1000x500/FFFFFF/333?text=NIVOR+Collection" alt="کلکسیون NIVOR" class="rounded-2xl shadow-2xl mx-auto floating-element">
+                    <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-var(--light-purple) rounded-full -z-10 opacity-40 filter blur-2xl floating-element" style="animation-delay: 1s;"></div>
+                    <div class="absolute -top-10 -right-10 w-48 h-48 bg-var(--pastel-pink) rounded-full -z-10 opacity-40 filter blur-2xl floating-element" style="animation-delay: 0.5s;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section id="products" class="py-24 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-20 scroll-animate">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">محصولات منتخب</h2>
+                    <p class="text-lg text-gray-500">زیبایی خود را با بهترین‌های ما کشف کنید.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20">
+                    <!-- Product Card 1 -->
+                    <div class="product-card pink-shadow group scroll-animate" style="transition-delay: 100ms;">
+                        <div class="image-wrapper"><img src="https://placehold.co/600x700/F8D3E0/FFFFFF?text=Serum" alt="سرم صورت" class="w-full h-auto object-cover"></div>
+                        <div class="p-8 text-center">
+                            <h3 class="text-xl font-semibold text-black mb-2">سرم آبرسان هیالورونیک</h3>
+                            <p class="text-lg font-medium text-var(--color-gold) mb-6">۸۹۰٬۰۰۰ تومان</p>
+                            <button class="add-to-cart-btn btn btn-primary w-full">افزودن به سبد</button>
+                        </div>
+                    </div>
+                    <!-- Product Card 2 -->
+                    <div class="product-card blue-shadow group scroll-animate" style="transition-delay: 200ms;">
+                        <div class="image-wrapper"><img src="https://placehold.co/600x700/CDEBF9/FFFFFF?text=Foundation" alt="کرم پودر" class="w-full h-auto object-cover"></div>
+                        <div class="p-8 text-center">
+                            <h3 class="text-xl font-semibold text-black mb-2">کرم پودر ساتنی</h3>
+                            <p class="text-lg font-medium text-var(--color-gold) mb-6">۱٬۱۰۰٬۰۰۰ تومان</p>
+                            <button class="add-to-cart-btn btn btn-primary w-full">افزودن به سبد</button>
+                        </div>
+                    </div>
+                    <!-- Product Card 3 -->
+                    <div class="product-card purple-shadow group scroll-animate" style="transition-delay: 300ms;">
+                        <div class="image-wrapper"><img src="https://placehold.co/600x700/D5C5F4/FFFFFF?text=Palette" alt="پالت سایه" class="w-full h-auto object-cover"></div>
+                        <div class="p-8 text-center">
+                            <h3 class="text-xl font-semibold text-black mb-2">پالت سایه چشم رؤیایی</h3>
+                            <p class="text-lg font-medium text-var(--color-gold) mb-6">۱٬۴۵۰٬۰۰۰ تومان</p>
+                            <button class="add-to-cart-btn btn btn-primary w-full">افزودن به سبد</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Story Section -->
+        <section class="py-24 md:py-32 bg-white">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+                <div class="scroll-animate">
+                    <img src="https://placehold.co/800x900/F8D3E0/FFFFFF?text=NIVOR" alt="داستان برند NIVOR" class="rounded-xl shadow-lg">
+                </div>
+                <div class="scroll-animate" style="transition-delay: 200ms;">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">داستان ما، زیبایی شما</h2>
+                    <p class="text-lg text-gray-600 leading-loose mb-8">
+                        در NIVOR، ما به دنبال خلق محصولاتی هستیم که نه تنها ظاهر شما را زیباتر می‌کنند، بلکه به روح شما نیز لطافت و شادی می‌بخشند. هر محصول با بالاترین استانداردها و با الهام از قدرت رنگ‌ها و طبیعت ساخته شده است.
+                    </p>
+                    <a href="#" class="font-semibold text-lg text-var(--color-gold) hover:text-black transition">بیشتر بخوانید <i class="fas fa-arrow-left mr-2"></i></a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-20 pb-10 border-t border-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-8">
+                <h3 class="text-3xl font-bold text-black mb-4">NIVOR</h3>
+                <div class="flex justify-center space-x-6 space-x-reverse mb-8">
+                    <a href="#" class="text-gray-500 hover:text-var(--color-gold) transition-colors text-2xl"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-var(--color-gold) transition-colors text-2xl"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-var(--color-gold) transition-colors text-2xl"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <p class="text-gray-400 text-sm">
+                &copy; 1403 - تمامی حقوق برای برند NIVOR محفوظ است.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Scroll Animation Logic ---
+        const scrollElements = document.querySelectorAll('.scroll-animate');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Optional: unobserve after animation to improve performance
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        scrollElements.forEach(el => {
+            observer.observe(el);
+        });
+    });
+    </script>
+</body>
+</html>
